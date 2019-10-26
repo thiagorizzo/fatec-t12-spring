@@ -1,8 +1,21 @@
 package com.fatec.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
+@Entity
 public class Produto {
+	
+	@Id
+	@GeneratedValue
 	private int codigo;
+	
+	@NotNull
+	@Column(name="nome", length=30)
 	private String nome;
 	
 	public int getCodigo() {
