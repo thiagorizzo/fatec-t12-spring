@@ -8,4 +8,5 @@ import com.fatec.models.Cliente;
 public interface IClienteService {
 	List<Cliente> listClientes();
 	Optional<Cliente> getByCodigo(int codigo);
+	List<Cliente> listByNome(String nome);
 }

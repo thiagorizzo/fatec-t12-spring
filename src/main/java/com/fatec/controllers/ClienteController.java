@@ -1,5 +1,6 @@
 package com.fatec.controllers;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,20 +13,37 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fatec.components.ILoggerComponent;
 import com.fatec.controllers.contract.IClienteService;
 import com.fatec.models.Cliente;
 
 @RestController
 @RequestMapping("/cliente")
-public class ClienteController {
+public class ClienteController extends Controller {
 
 	@Autowired
 	private IClienteService clienteService;
 	
+	@Autowired
+	private ILoggerComponent loggerComponent;
+	
+	public ClienteController() {
+		super("ClienteController");
+
+		// loggerComponent deve ser prototype, pois cada controller terá
+		// uma instância separada
+		loggerComponent.setController(this); 
+	}
+
 	@GetMapping
-	public ResponseEntity<List<Cliente>> listClientes() {
-		List<Cliente> clientes = clienteService.listClientes();
-		return new ResponseEntity<List<Cliente>>(clientes, HttpStatus.OK);
+	public ResponseEntity<List<Cliente>> listClientes() throws IOException {
+		try {
+			List<Cliente> clientes = clienteService.listClientes();
+			return new ResponseEntity<List<Cliente>>(clientes, HttpStatus.OK);
+		} catch(Exception ex) {
+			loggerComponent.error(ex.getMessage());
+			return null;
+		}
 	}
 
 	@GetMapping(path = "/{codigo}")
@@ -33,6 +51,21 @@ public class ClienteController {
 		Optional<Cliente> cliente = clienteService.getByCodigo(codigo);
 		return new ResponseEntity<Optional<Cliente>>(cliente, HttpStatus.OK);
 	}
+	
+	// http://localhost/cliente/thiago/nome  -> @GetMapping(path = "{nome}/nome")
+	// http://localhost/cliente/nome/thiago -> @GetMapping(path = "nome/{nome}")
+	
+	@GetMapping(path = "{nome}/nome")
+	public ResponseEntity<List<Cliente>> listByNome(@PathVariable("nome") String nome) throws IOException {
+		try {
+			List<Cliente> clientes = clienteService.listByNome(nome);
+			return new ResponseEntity<List<Cliente>>(clientes, HttpStatus.OK);
+		} catch(Exception ex) {
+			loggerComponent.error(ex.getMessage());
+			return null;
+		}
+	}
+	
 	
 	
 	
