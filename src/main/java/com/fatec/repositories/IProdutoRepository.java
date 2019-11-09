@@ -11,7 +11,7 @@ import com.fatec.models.Produto;
 // JpaRepository -> CrudRepository + PagingAndSortingRepository
 //
 // Tipo Generic -> <Classe, Tipo da chave primária>
-/*@Repository
+@Repository
 public interface IProdutoRepository extends JpaRepository<Produto, Integer> {
 
-}*/
+}

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fatec.models.ItemPedido;
 
-/*@Repository
+@Repository
 public interface IItemPedidoRepository extends JpaRepository<ItemPedido, Integer>{
 
-}*/
+}

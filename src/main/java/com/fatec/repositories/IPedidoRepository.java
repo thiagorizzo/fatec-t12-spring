@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fatec.models.Pedido;
 
-/*@Repository
+@Repository
 public interface IPedidoRepository extends JpaRepository<Pedido, Integer>{
 
-}*/
+}

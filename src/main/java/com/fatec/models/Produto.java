@@ -3,6 +3,7 @@ package com.fatec.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.sun.istack.NotNull;
@@ -11,7 +12,7 @@ import com.sun.istack.NotNull;
 public class Produto {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	
 	@NotNull
