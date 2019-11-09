@@ -14,7 +14,7 @@ import com.fatec.components.ILoggerComponent;
 import com.fatec.controllers.contract.IProdutoService;
 import com.fatec.models.Produto;
 
-public class ProdutoController extends Controller {
+public class ProdutoController extends ControllerBase {
 	
 	@Autowired
 	private IProdutoService produtoService;

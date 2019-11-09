@@ -8,19 +8,19 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.fatec.controllers.Controller;
+import com.fatec.controllers.ControllerBase;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class LoggerComponent implements ILoggerComponent {
 
-	private Controller controller;
+	private ControllerBase controller;
 
-	public void setController(Controller controller) {
+	public void setController(ControllerBase controller) {
 		this.controller = controller;
 	}
 
-	public Controller getController() {
+	public ControllerBase getController() {
 		return controller;
 	}
 	

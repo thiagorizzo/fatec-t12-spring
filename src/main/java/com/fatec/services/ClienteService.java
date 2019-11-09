@@ -30,6 +30,21 @@ public class ClienteService implements IClienteService {
 	public List<Cliente> listByNome(String nome) {
 		List<Cliente> clientes = clienteRepository.listByNome(nome);
 		return clientes;
+	}
+	
+	@Override
+	public Cliente create(Cliente cliente) {
+		return clienteRepository.save(cliente);
+	}
+	
+	@Override
+	public void remove(Cliente cliente) {
+		clienteRepository.delete(cliente);
+	}
+
+	@Override
+	public Cliente update(Cliente cliente) {
+		return clienteRepository.save(cliente);
 	}	
 }
 	

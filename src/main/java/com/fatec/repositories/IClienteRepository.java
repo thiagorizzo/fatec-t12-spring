@@ -13,6 +13,10 @@ import com.fatec.models.Cliente;
 
 @Repository
 @Scope(BeanDefinition.SCOPE_SINGLETON)
+/*
+  	SINGLETON: apenas uma instância por aplicação // cada injeção pega mesma instância
+  	PROTOTYPE: cada injeção gera nova instância
+*/
 public interface IClienteRepository extends JpaRepository<Cliente, Integer>{
 
 	// JPQL -> "SELECT c FROM Cliente c WHERE c.nome = :nome"
