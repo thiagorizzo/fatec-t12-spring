@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +25,8 @@ import com.fatec.models.Cliente;
 @RequestMapping("/cliente")
 public class ClienteController extends ControllerBase {
 
+	// utiliza nome qualificador para decidir qual IClienteService injetar
+	@Qualifier("repository")
 	@Autowired // Injeção por atributo
 	private IClienteService clienteService;
 	
